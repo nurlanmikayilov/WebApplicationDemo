@@ -25,6 +25,7 @@ var summaries = new[]
 app.MapGet("/say-hello", () => "Hello, World!").WithName("SayHello");
 app.MapGet("/say-goodbye", () => "Goodbye, World!").WithName("SayGoodbye");
 
+Console.WriteLine("It is running on: " + Environment.MachineName);
 
 app.MapGet("/weatherforecast", () =>
     {
