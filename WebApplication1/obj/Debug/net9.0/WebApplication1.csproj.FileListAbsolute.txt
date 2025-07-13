@@ -32,3 +32,4 @@
 /Users/nurlanmikayilov/RiderProjects/WebApplication1/WebApplication1/obj/Debug/net9.0/WebApplication1.genruntimeconfig.cache
 /Users/nurlanmikayilov/RiderProjects/WebApplication1/WebApplication1/obj/Debug/net9.0/ref/WebApplication1.dll
 /Users/nurlanmikayilov/RiderProjects/WebApplication1/WebApplication1/bin/Debug/net9.0/Scalar.AspNetCore.dll
+/Users/nurlanmikayilov/RiderProjects/WebApplication1/WebApplication1/obj/Debug/net9.0/WebApplication1.sourcelink.json
