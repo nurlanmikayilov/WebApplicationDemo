@@ -19,12 +19,12 @@ spec:
           image: webapplication1:0.1
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 8000
+            - containerPort: 8080
           env:
             - name: ASPNETCORE_ENVIRONMENT
               value: Development
             - name: ASPNETCORE_URLS
-              value: "http://+:8000"
+              value: "http://+:8080"
           resources:
             requests:
               cpu: "250m"
@@ -35,13 +35,13 @@ spec:
           readinessProbe:
             httpGet:
               path: /weatherforecast
-              port: 8000
+              port: 8080
             initialDelaySeconds: 5
             periodSeconds: 10
           livenessProbe:
             httpGet:
               path: /weatherforecast
-              port: 8000
+              port: 8080
             initialDelaySeconds: 15
             periodSeconds: 20
 
@@ -58,7 +58,7 @@ spec:
   ports:
     - protocol: TCP
       port: 8001
-      targetPort: 8000
+      targetPort: 8080
 
 ---
 
@@ -82,4 +82,4 @@ spec:
               service:
                 name: web-app-service
                 port:
-                  number: 80
+                  number: 8080
