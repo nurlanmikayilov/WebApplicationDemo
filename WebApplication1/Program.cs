@@ -22,7 +22,7 @@ var summaries = new[]
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
-app.MapGet("/say-go", () => "Go, World!").WithName("SayGo");
+app.MapGet("/say-go", () => "Go, World!+++++").WithName("SayGo");
 app.MapGet("/say-hello", () => "Hello, World!").WithName("SayHello");
 app.MapGet("/say-goodbye", () => "Goodbye, World!").WithName("SayGoodbye");
 
