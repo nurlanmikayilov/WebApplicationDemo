@@ -25,26 +25,6 @@ spec:
               value: Development
             - name: ASPNETCORE_URLS
               value: "http://+:8080"
-          resources:
-            requests:
-              cpu: "250m"
-              memory: "256Mi"
-            limits:
-              cpu: "500m"
-              memory: "512Mi"
-          readinessProbe:
-            httpGet:
-              path: /weatherforecast
-              port: 8080
-            initialDelaySeconds: 5
-            periodSeconds: 10
-          livenessProbe:
-            httpGet:
-              path: /weatherforecast
-              port: 8080
-            initialDelaySeconds: 15
-            periodSeconds: 20
-
 ---
 
 apiVersion: v1
@@ -52,10 +32,32 @@ kind: Service
 metadata:
   name: web-app-service
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: web-app
   ports:
     - protocol: TCP
-      port: 8001
+      port: 80
       targetPort: 8080
+      
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mcu-all
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: webapp.local
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web-app-service
+                port:
+                  number: 8080
+
